@@ -31,7 +31,7 @@ function CreateBlog() {
     formData.append("blogImage", blogImage);
     try {
       const { data } = await axios.post(
-        "http://localhost:4001/api/blogs/create",
+        "https://blog-app-backend-gules.vercel.app/api/blogs/create",
         formData,
         {
           withCredentials: true,
@@ -48,7 +48,6 @@ function CreateBlog() {
       setBlogImage("");
       setBlogImagePreview("");
     } catch (error) {
-      console.log(error);
       toast.error(error.message || "Please fill the required fields");
     }
   };

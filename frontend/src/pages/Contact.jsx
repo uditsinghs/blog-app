@@ -1,4 +1,3 @@
-import React from "react";
 import { FaEnvelope, FaMapMarkerAlt, FaPhone } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import axios from "axios";
@@ -8,7 +7,6 @@ function Contact() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
 

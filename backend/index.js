@@ -36,9 +36,7 @@ app.use(
 try {
   mongoose.connect(MONOGO_URL);
   console.log("Conntected to MonogDB");
-} catch (error) {
-  console.log(error);
-}
+} catch (error) {}
 
 // defining routes
 app.use("/api/users", userRoute);

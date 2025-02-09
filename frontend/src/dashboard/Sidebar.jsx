@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+/* eslint-disable react/prop-types */
+import { useState } from "react";
 import { useAuth } from "../context/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -24,15 +25,14 @@ function Sidebar({ setComponent }) {
     e.preventDefault();
     try {
       const { data } = await axios.get(
-        "http://localhost:4001/api/users/logout",
+        "https://blog-app-backend-gules.vercel.app/api/users/logout",
         { withCredentials: true }
       );
       toast.success(data.message);
-       localStorage.removeItem("jwt"); // deleting token in localStorage so that if user logged out it will goes to login page
+      localStorage.removeItem("jwt"); // deleting token in localStorage so that if user logged out it will goes to login page
       setIsAuthenticated(false);
       navigateTo("/login");
     } catch (error) {
-      console.log(error);
       toast.error(error.data.message || "Failed to logout");
     }
   };
@@ -60,7 +60,7 @@ function Sidebar({ setComponent }) {
           <img
             className="w-24 h-24 rounded-full mx-auto mb-2"
             src={profile?.user?.photo?.url}
-            alt=""
+            alt="profile-img"
           />
           <p className="text-lg font-semibold">{profile?.user?.name}</p>
         </div>

@@ -48,7 +48,6 @@ export const createBlog = async (req, res) => {
       blog,
     });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ error: "Internal Server error" });
   }
 };

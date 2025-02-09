@@ -1,11 +1,11 @@
 import axios from "axios";
-import React, { useState } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthProvider";
 
 function Login() {
-  const { isAuthenticated, setIsAuthenticated, setProfile } = useAuth();
+  const { setIsAuthenticated, setProfile } = useAuth();
 
   const navigateTo = useNavigate();
   const [email, setEmail] = useState("");
@@ -17,7 +17,8 @@ function Login() {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:4001/api/users/login",
+        "https://blog-app-backend-gules.vercel.app/api/users/login",
+
         { email, password, role },
         {
           withCredentials: true,
@@ -39,7 +40,6 @@ function Login() {
       setRole("");
       navigateTo("/");
     } catch (error) {
-      console.log(error);
       toast.error(
         error.response.data.message || "Please fill the required fields",
         {

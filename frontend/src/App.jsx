@@ -1,4 +1,4 @@
-import React from "react";
+
 import Navbar from "../src/components/Navbar";
 import Home from "../src/components/Home";
 import Footer from "../src/components/Footer";
@@ -14,7 +14,7 @@ import { useAuth } from "./context/AuthProvider";
 import { Toaster } from "react-hot-toast";
 import UpdateBlog from "./dashboard/UpdateBlog";
 import Detail from "./pages/Detail";
-import NotFound from "./pages/NotFound";
+// import NotFound from "./pages/NotFound";
 function App() {
   const location = useLocation();
   const hideNavbarFooter = ["/dashboard", "/login", "/register"].includes(
@@ -48,8 +48,7 @@ function App() {
         {/* Update page route */}
         <Route exact path="/blog/update/:id" element={<UpdateBlog />} />
 
-        {/* Universal route */}
-        <Route path="*" element={<NotFound />} />
+    
       </Routes>
       <Toaster />
       {!hideNavbarFooter && <Footer />}

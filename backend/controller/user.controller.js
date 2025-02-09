@@ -71,7 +71,6 @@ export const register = async (req, res) => {
       });
     }
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ error: "Internal Server error" });
   }
 };
@@ -108,7 +107,6 @@ export const login = async (req, res) => {
       token: token,
     });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ error: "Internal Server error" });
   }
 };
@@ -118,7 +116,6 @@ export const logout = (req, res) => {
     res.clearCookie("jwt");
     res.status(200).json({ message: "User logged out successfully" });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ error: "Internal Server error" });
   }
 };

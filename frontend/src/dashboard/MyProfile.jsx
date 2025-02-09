@@ -1,9 +1,9 @@
-import React from "react";
+
 import { useAuth } from "../context/AuthProvider";
 
 function MyProfile() {
   const { profile } = useAuth();
-  console.log(profile?.user);
+
   return (
     <div>
       <div className="flex justify-center items-center min-h-screen bg-gray-100">

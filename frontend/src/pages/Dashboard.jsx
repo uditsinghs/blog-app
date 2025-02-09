@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useAuth } from "../context/AuthProvider";
 import Sidebar from "../dashboard/Sidebar";
 import MyProfile from "../dashboard/MyProfile";
@@ -7,10 +7,10 @@ import CreateBlog from "../dashboard/CreateBlog";
 import UpdateBlog from "../dashboard/UpdateBlog";
 import { Navigate } from "react-router-dom";
 function Dashboard() {
-  const { profile, isAuthenticated } = useAuth();
+  
+  const {  isAuthenticated } = useAuth();
   const [component, setComponent] = useState("My Blogs");
-  console.log(profile);
-  console.log(isAuthenticated);
+
 
   if (!isAuthenticated) {
     return <Navigate to={"/"} />;

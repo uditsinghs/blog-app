@@ -1,11 +1,11 @@
 import axios from "axios";
-import React, { useState } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthProvider";
 
 function Register() {
-  const { isAuthenticated, setIsAuthenticated, setProfile } = useAuth();
+  const { setIsAuthenticated, setProfile } = useAuth();
 
   const navigateTo = useNavigate();
 
@@ -41,7 +41,7 @@ function Register() {
     formData.append("photo", photo);
     try {
       const { data } = await axios.post(
-        "http://localhost:4001/api/users/register",
+        "https://blog-app-backend-gules.vercel.app/api/users/register",
         formData,
         {
           withCredentials: true,
@@ -65,9 +65,8 @@ function Register() {
       setPhotoPreview("");
       navigateTo("/");
     } catch (error) {
-      console.log(error);
       toast.error(
-        error.response.data.message || "Please fill the required fields"
+        error.response?.data?.message || "Please fill the required fields"
       );
     }
   };

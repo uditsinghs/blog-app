@@ -1,5 +1,7 @@
+/* eslint-disable react-refresh/only-export-components */
+/* eslint-disable react/prop-types */
 import axios from "axios";
-import React, { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 export const AuthContext = createContext();
 
@@ -16,7 +18,7 @@ export const AuthProvider = ({ children }) => {
         console.log(token);
         if (token) {
           const { data } = await axios.get(
-            "http://localhost:4001/api/users/my-profile",
+            "https://blog-app-backend-gules.vercel.app/api/users/my-profile",
             {
               withCredentials: true,
               headers: {
@@ -28,22 +30,18 @@ export const AuthProvider = ({ children }) => {
           setProfile(data.user);
           setIsAuthenticated(true);
         }
-      } catch (error) {
-        console.log(error);
-      }
+      } catch (error) {}
     };
 
     const fetchBlogs = async () => {
       try {
         const { data } = await axios.get(
-          "http://localhost:4001/api/blogs/all-blogs",
+          "https://blog-app-backend-gules.vercel.app/api/blogs/all-blogs",
           { withCredentials: true }
         );
         console.log(data);
         setBlogs(data);
-      } catch (error) {
-        console.log(error);
-      }
+      } catch (error) {}
     };
 
     fetchBlogs();
